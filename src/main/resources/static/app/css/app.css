@@ -1,0 +1,66 @@
+body, #mainWrapper {
+	height: 70%;
+	background-color:rgb(245, 245, 245);
+}
+
+body, .form-control{
+	font-size:12px!important;
+}
+
+.floatRight{
+	float:right;
+	margin-right: 18px;
+}
+
+.has-error{
+	color:red;
+}
+
+.formcontainer{
+	background-color: #E1F5FE;
+	padding: 20px;
+}
+
+.tablecontainer{
+	padding-left: 20px;
+}
+
+.generic-container {
+  width:80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #CFD8DC;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 0 5px black;
+}
+
+.custom-width {
+    width: 80px !important;
+}
+
+
+/* Styles frm the main index page  */
+
+.username.ng-valid {
+    background-color: lightgreen;
+}
+.username.ng-dirty.ng-invalid-required {
+    background-color: red;
+}
+.username.ng-dirty.ng-invalid-minlength {
+    background-color: yellow;
+}
+
+.email.ng-valid {
+    background-color: lightgreen;
+}
+.email.ng-dirty.ng-invalid-required {
+    background-color: red;
+}
+.email.ng-dirty.ng-invalid-email {
+    background-color: yellow;
+}
