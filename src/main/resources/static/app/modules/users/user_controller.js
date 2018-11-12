@@ -28,15 +28,15 @@ angular.module('myApp').controller('UserController', ['$scope', '$log', 'UserSer
     function getAllUsers(){
         UserService.fetchAllUsers()
             .then(
-                function(){
-                    self.users = data;
+                function (data) {
+                    $scope.users = data;
                 },
-                function (errorResponse) {
-                    console.error('Error occur ');
-
+                function (errResponse) {
+                    console.error("Unable to fetch all Users.");
                 }
             );
     }
+
 
     function createUser(user){
         UserService.createUser(user)
@@ -46,17 +46,6 @@ angular.module('myApp').controller('UserController', ['$scope', '$log', 'UserSer
                 console.error('Error while creating User');
             }
         );
-    }
-
-    // my won clone of the method
-    function createNewUser(){
-        UserService.createUser(user)
-            .then(
-                fetchAllUsers,
-                function (errResponse) {
-                    console.error('Error occur');
-                }
-            );
     }
 
     function updateUser(user, id){
@@ -69,17 +58,6 @@ angular.module('myApp').controller('UserController', ['$scope', '$log', 'UserSer
         );
     }
 
-    // my won clone of the method
-    function updateTheUser(user, id) {
-        UserService.update(user)
-            .then(
-                fetchAllUsers,
-                function (errorResponse) {
-                    console.error('Error while updating User');
-                }
-            );
-    }
-
     function deleteUser(id){
         UserService.deleteUser(id)
             .then(
@@ -90,17 +68,6 @@ angular.module('myApp').controller('UserController', ['$scope', '$log', 'UserSer
         );
     }
 
-    // my won clone of the method
-    function deleteAUser(id) {
-        UserService.deleteTheUser()
-            .then(
-                fetchAllUsers,
-                function (reason) {
-                    console.error('An error occured while deleting user ');
-                }
-            );
-    }
-
     function submit() {
         if(self.user.id===null){
             console.log('Saving New User', self.user);
@@ -108,17 +75,6 @@ angular.module('myApp').controller('UserController', ['$scope', '$log', 'UserSer
         }else{
             updateUser(self.user, self.user.id);
             console.log('User updated with id ', self.user.id);
-        }
-        reset();
-    }
-
-    function submitThe() {
-        if (self.user.id===null){
-            console.log('Saving New User', self.user);
-            createUser(self.user);
-        } else{
-            updateUser(self.user, self.user.id);
-            console.log('User update with id ', self.user.id);
         }
         reset();
     }
@@ -137,16 +93,6 @@ angular.module('myApp').controller('UserController', ['$scope', '$log', 'UserSer
         console.log('id to be edited', id);
         for(var i = 0; i < self.users.length; i++){
             if(self.users[i].id === id) {
-                self.user = angular.copy(self.users[i]);
-                break;
-            }
-        }
-    }
-
-    function editThe(id) {
-        console.log('id to be edited', id);
-        for (var i = 0; i < self.users.length; i++){
-            if(self.user[i].id === id){
                 self.user = angular.copy(self.users[i]);
                 break;
             }
